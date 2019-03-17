@@ -15,4 +15,4 @@ steps:
   - 'my-container=gcr.io/$PROJECT_ID/image:$REVISION_ID'
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=standard-cluster-1'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
