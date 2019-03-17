@@ -1,0 +1,10 @@
+{
+  "name": "kube-node-demo",
+  "version": "1.0.0",
+  "description": "Kube Deployment",
+  "main": "index.js",
+  "repository": "https://github.com/hardik-satasiya/node-test.git",
+  "author": "hardik <hardik_satasiya@yahoo.com>",
+  "license": "MIT",
+  "private": false
+}
