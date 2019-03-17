@@ -1,10 +1,32 @@
 {
-  "name": "kube-node-demo",
-  "version": "1.0.0",
-  "description": "Kube Deployment",
-  "main": "index.js",
-  "repository": "https://github.com/hardik-satasiya/node-test.git",
-  "author": "hardik <hardik_satasiya@yahoo.com>",
-  "license": "MIT",
-  "private": false
+  "name": "gae-node-hello-world",
+  "version": "0.0.1",
+  "description": "Hello World Node App for Google App Engine",
+  "main": "app.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "jest",
+    "docker:start": "docker build -t $PROJECT_ID/image:$REVISION_ID . && docker run -p 3000:3000 -d $PROJECT_ID/image:$REVISION_ID",
+    "docker:stop": "docker kill $(docker ps -f ancestor=$PROJECT_ID/image:$REVISION_ID -q) && docker rm $(docker ps -a -f status=exited -q) && docker rmi $PROJECT_ID/image:$REVISION_ID",
+    "docker:test": "docker build -t $PROJECT_ID/image/test:$REVISION_ID -f Dockerfile.test . && docker run --rm $PROJECT_ID/image/test:$REVISION_ID && docker rmi $PROJECT_ID/image/test:$REVISION_ID",
+    "clean:containers": "docker rm $(docker ps -a -f status=exited -q)",
+    "clean:images": "docker rmi $(docker images -a -q)"
+  },
+  "dependencies": {
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "jest": "^23.5.0",
+    "supertest": "^3.1.0"
+  },
+  "engines": {
+    "node": "8.x.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gautamarora/gae-node-hello-world.git"
+  },
+  "author": "Gautam Arora",
+  "license": "Apache-2.0",
+  "private": "true"
 }
