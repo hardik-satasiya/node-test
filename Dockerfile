@@ -1,10 +1,10 @@
 FROM alpine:3.1
 
-# install yarn
-RUN curl -o- -L https://yarnpkg.com/install.sh | bash
-
-# Update
+# update node
 RUN apk add --update nodejs
+
+# install yarn
+RUN apk add yarn
 
 # Install app dependencies
 RUN yarn install
