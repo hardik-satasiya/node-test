@@ -1,13 +1,13 @@
 steps:
 - name: 'gcr.io/cloud-builders/npm'
-  args: ['install']
-- name: 'gcr.io/cloud-builders/npm'
-  args: ['test']
-- name: 'gcr.io/cloud-builders/npm'
   args: ['generate-config', '$BUILD_ID']
 - name: 'gcr.io/cloud-builders/npm'
   args: ['print-config']
 - name: 'gcr.io/cloud-builders/docker'
+- name: 'gcr.io/cloud-builders/npm'
+  args: ['install']
+- name: 'gcr.io/cloud-builders/npm'
+  args: ['test']
   args: ["build", "-t", "gcr.io/$PROJECT_ID/image:$REVISION_ID", "."]
 - name: 'gcr.io/cloud-builders/docker'
   args: ["push", "gcr.io/$PROJECT_ID/image:$REVISION_ID"]
