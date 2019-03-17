@@ -12,7 +12,7 @@
     "clean:containers": "docker rm $(docker ps -a -f status=exited -q)",
     "clean:images": "docker rmi $(docker images -a -q)",
     "generate-config": "node  generate-config/generate.js",
-    "print-config": "node  generate-config/print.js",
+    "print-config": "node  generate-config/print.js"
   },
   "dependencies": {
     "express": "^4.16.3"
