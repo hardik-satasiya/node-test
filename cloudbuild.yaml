@@ -5,6 +5,9 @@ steps:
   args: ['run', 'generate-config', '$BUILD_ID']
 - name: 'gcr.io/cloud-builders/kubectl'
   args: ["apply", "-f", "service-config.yaml"]
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
 - name: 'gcr.io/cloud-builders/npm'
   args: ['test']
 - name: 'gcr.io/cloud-builders/docker'
