@@ -1,13 +1,7 @@
-FROM alpine:3.1
-
-# update node
-RUN apk add --update nodejs
-
-# install yarn
-RUN apk add yarn
+FROM node:11
 
 # Install app dependencies
-RUN yarn install
+RUN yarn
 
 EXPOSE  8080
 
