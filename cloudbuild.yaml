@@ -3,8 +3,8 @@ steps:
   args: ['install']
 - name: 'gcr.io/cloud-builders/npm'
   args: ['run', 'generate-config', '$BUILD_ID']
-- name: 'gcr.io/cloud-builders/npm'
-  args: ['run', 'print-config']
+- name: 'gcr.io/cloud-builders/kubectl'
+  args: ["apply", "-f", "service-config.yaml"]
 - name: 'gcr.io/cloud-builders/npm'
   args: ['test']
 - name: 'gcr.io/cloud-builders/docker'
