@@ -1,4 +1,8 @@
 steps:
+- name: 'ubuntu'
+  args: ['bash', './myscript.sh']
+  env:
+  - 'REV=$REVISION_ID'
 - name: 'gcr.io/cloud-builders/npm'
   args: ['install']
 - name: 'gcr.io/cloud-builders/npm'
