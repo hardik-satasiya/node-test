@@ -12,7 +12,7 @@ steps:
   - 'set'
   - 'image'
   - 'deployment/my-deployment'
-  - 'my-container=gcr.io/$PROJECT_ID/image:$REVISION_ID'
+  - 'node-test-sha256=gcr.io/$PROJECT_ID/image:$REVISION_ID'
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
   - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
