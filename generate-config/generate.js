@@ -10,7 +10,7 @@ const GIT_COMMIT = args[1]
 const BUDDY_EXECUTION_ID = args[2]
 const APP =  BUDDY_PROJECT_NAME_ID + '-' + BUDDY_EXECUTION_ID
 
-const K8S_CLUSTER_URL = APP + '-' + BUDDY_EXECUTION_ID + '.fashionfortret.com'
+const K8S_CLUSTER_URL = APP + '.fashionfortret.com'
 const DockerRegistryUrl = 'asia.gcr.io/advance-verve-234809/github.com/hardik-satasiya/node-test'
 
 /*
@@ -75,8 +75,13 @@ spec:
     port: 443
     targetPort: 3000
   type: NodePort
----
 
+`, function (err) {
+  if (err) throw err;
+  console.log('Deploy Config File is created successfully.');
+});
+
+/*
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
@@ -91,8 +96,24 @@ spec:
         - backend:
             serviceName: ${APP}-service
             servicePort: 80
+*/
+
+
+/*fs.writeFile('ingress-patch.yaml', `spec:
+  rules:
+  - host: ${K8S_CLUSTER_URL}
+    http:
+      paths:
+        - backend:
+            serviceName: ${APP}-service
+            servicePort: 80
 `, function (err) {
   if (err) throw err;
-  console.log('Deploy Config File is created successfully.');
-});
+  console.log('Ingress Patch File Generated Config File is created successfully.');
+});*/
+
+
+kubectl patch deployment patch-demo --patch '{"spec": {"template": {"spec": {"containers": [{"name": "patch-demo-ctr-2","image": "redis"}]}}}}'
+
+
 
