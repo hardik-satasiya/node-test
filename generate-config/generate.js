@@ -39,7 +39,7 @@ metadata:
   labels:
     app: ${APP}
     version: ${GIT_COMMIT}
-    pull-request: ${BUDDY_EXECUTION_ID}
+    execution-id: "${BUDDY_EXECUTION_ID}"
 spec:
   replicas: 1
   selector:
