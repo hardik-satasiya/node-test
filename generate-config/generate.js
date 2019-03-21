@@ -1,14 +1,16 @@
 // include node fs module
-// npm run generate-config $APP $GIT_COMMIT $GIT_BRANCH
+// npm run generate-config $BUDDY_PROJECT_NAME_ID $BUDDY_EXECUTION_REVISION $BUDDY_EXECUTION_ID
 var fs = require('fs');
 
 const args = process.argv.slice(2)
 
-const APP = args[0]
-const GIT_COMMIT = args[1]
-const GIT_BRANCH = args[2]
 
-const K8S_CLUSTER_URL = APP + '-' + GIT_BRANCH + '.fashionfortret.com'
+const BUDDY_PROJECT_NAME_ID = args[0]
+const GIT_COMMIT = args[1]
+const BUDDY_EXECUTION_ID = args[2]
+const APP =  BUDDY_PROJECT_NAME_ID + '-' + BUDDY_EXECUTION_ID
+
+const K8S_CLUSTER_URL = APP + '-' + BUDDY_EXECUTION_ID + '.fashionfortret.com'
 const DockerRegistryUrl = 'gcr.io/advance-verve-234809/github.com/hardik-satasiya/node-test'
 
 /*
@@ -37,7 +39,7 @@ metadata:
   labels:
     app: ${APP}
     version: ${GIT_COMMIT}
-    pull-request: ${GIT_BRANCH}
+    pull-request: ${BUDDY_EXECUTION_ID}
 spec:
   replicas: 1
   selector:
