@@ -81,6 +81,8 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: ${APP}-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: acme-ip
 spec:
   rules:
   - host: ${K8S_CLUSTER_URL}
