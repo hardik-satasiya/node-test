@@ -111,9 +111,3 @@ spec:
   if (err) throw err;
   console.log('Ingress Patch File Generated Config File is created successfully.');
 });*/
-
-
-kubectl patch deployment patch-demo --patch '{"spec": {"template": {"spec": {"containers": [{"name": "patch-demo-ctr-2","image": "redis"}]}}}}'
-
-
-
