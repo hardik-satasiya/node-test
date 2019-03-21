@@ -11,7 +11,7 @@ const BUDDY_EXECUTION_ID = args[2]
 const APP =  BUDDY_PROJECT_NAME_ID + '-' + BUDDY_EXECUTION_ID
 
 const K8S_CLUSTER_URL = APP + '-' + BUDDY_EXECUTION_ID + '.fashionfortret.com'
-const DockerRegistryUrl = 'gcr.io/advance-verve-234809/github.com/hardik-satasiya/node-test'
+const DockerRegistryUrl = 'asia.gcr.io/advance-verve-234809/github.com/hardik-satasiya/node-test'
 
 /*
 apiVersion: v1
@@ -32,7 +32,7 @@ spec:
 */
 
 // writeFile function with filename, content and callback function
-fs.writeFile('deployment-config.yaml', `apiVersion: apps/v1
+fs.writeFile('deployment-config.yaml', `apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: ${APP}-deployment
@@ -44,14 +44,14 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ${APP}
+      app: "${APP}"
   template:
     metadata:
       labels:
-        app: ${APP}
+        app: "${APP}"
     spec:
       containers:
-      - name: wegde-ibe
+      - name: "${APP}-deployment"
         image: ${DockerRegistryUrl}:${GIT_COMMIT}
         ports:
         - containerPort: 3000
