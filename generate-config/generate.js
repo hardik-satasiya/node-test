@@ -74,7 +74,7 @@ spec:
     name: https
     port: 443
     targetPort: 3000
-
+  type: NodePort
 ---
 
 apiVersion: extensions/v1beta1
